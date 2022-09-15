@@ -1,7 +1,10 @@
 #include "View.h"
 #include <wiringPi.h>
 
-View::View(Led *led1, Led *led2, Led *led3, Led *led4, Led *led5 , LCD *lcd)
+
+
+
+View::View(Led *led1, Led *led2, Led *led3, Led *led4, Led *led5 , LCD *lcd )
 {
     light1 = led1;
     light2 = led2;
@@ -129,4 +132,14 @@ void View::lightOff()
     light3->Off();
     light4->Off();
     light5->Off();
+}
+
+void View::Warning()//float temp
+{
+    char buff[30];
+    sprintf(buff,"Light off");
+    lcd -> WriteStringXY(0,0, buff);
+    sprintf(buff,"Warning");
+    lcd -> WriteStringXY(1, 9, buff);
+    lightOff();
 }

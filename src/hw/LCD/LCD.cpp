@@ -84,12 +84,14 @@ void LCD::writeData(uint8_t charData)
 void LCD::backLightOn()
 {
     lcdData |= (1 << LCD_BACKLIGHT); // #define BACKLIGHT	3
+    sendDataToInterface(lcdData);
     //sendData(lcdData);
 }
 
 void LCD::backLightOff()
 {
     lcdData &= ~(1 << LCD_BACKLIGHT);
+    sendDataToInterface(lcdData);
     //sendData(lcdData);
 }
 

@@ -33,7 +33,7 @@ int main()
     TempHumidView tempHumidView(&lcd);
     ClockView clockView(&lcd);
     Service service(&view);
-    TempHumidService tempHumidService(&tempHumidView);
+    TempHumidService tempHumidService(&tempHumidView);//,&view
     ClockService clockSerivce(&clockView);
     Controller control(&service, &clockSerivce, &tempHumidService);
     Listener listener(&modeButton,&powerButton, &control, &clockCheck, &dht);
@@ -43,8 +43,20 @@ int main()
 
     while (1)
     {
+        if(dht.dhtData.Temp < 27)
+        {
+            // view.Warning();
+            view.lightView();
+
+        }
+        else
+        {
+            // view.lightView();
+            view.Warning();
+
+        }
         listener.checkEvent();
-        view.lightView();
+        // view.lightView();
         delay(10);
     }
 

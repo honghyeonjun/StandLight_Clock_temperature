@@ -5,6 +5,7 @@
 #include "Led.h"
 #include "LightState.h"
 #include "LCD.h"
+#include "DHT_Data.h"
 
 //enum {LIGHT_OFF, LIGHT_1, LIGHT_2, LIGHT_3, LIGHT_4, LIGHT_5};
 
@@ -30,6 +31,8 @@ public:
     void lightOn_3();
     void lightOn_4();
     void lightOn_5();
+    //void Warning(float temp);
+    void Warning();
 };
 
 #endif /* __VIEW_H__ */

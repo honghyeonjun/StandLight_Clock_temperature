@@ -8,13 +8,13 @@ class DHT11
 private:
     int pinNumber;
     int data[5];
-    DHT_Data dhtData;
-
+    
     void startTrigger();
     void waitResponse();
     void clearData();
 
 public:
+    DHT_Data dhtData;
     DHT11(int pin);
     virtual ~DHT11();
     DHT_Data readData();
