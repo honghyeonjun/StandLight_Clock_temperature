@@ -4,6 +4,8 @@
 #include "Button.h"
 #include "ClockCheck.h"
 #include "Controller.h"
+#include "DHT11.h"
+#include "DHT_Data.h"
 
 class Listener
 {
@@ -12,9 +14,10 @@ private :
     Button *powerButton;
     ClockCheck *clockCheck;
     Controller *controller;
+    DHT11 *dht11;
 
 public:
-    Listener(Button *modeButton,Button *powerButton, Controller *control, ClockCheck *clock);
+    Listener(Button *modeButton,Button *powerButton, Controller *control, ClockCheck *clock, DHT11 *dht11);
     ~Listener();
     void checkEvent();
 };

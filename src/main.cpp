@@ -11,7 +11,10 @@
 #include "ClockService.h"
 #include "ClockCheck.h"
 #include "I2C.h"
-
+#include "DHT11.h"
+#include "TempHumidView.h"
+#include "TempHumidService.h"
+#include "DHT_Data.h"
 int main()
 {
     std::cout << "Hello World!" << std::endl;
@@ -24,14 +27,20 @@ int main()
     Led led3(23);
     Led led4(24);
     Led led5(25);
+    DHT11 dht(7);
     LCD lcd(new I2C("/dev/i2c-1", 0x27));
     View view(&led1, &led2, &led3, &led4, &led5, &lcd);
+    TempHumidView tempHumidView(&lcd);
     ClockView clockView(&lcd);
     Service service(&view);
+    TempHumidService tempHumidService(&tempHumidView);
     ClockService clockSerivce(&clockView);
-    Controller control(&service, &clockSerivce);
-    Listener listener(&modeButton,&powerButton, &control, &clockCheck);
+    Controller control(&service, &clockSerivce, &tempHumidService);
+    Listener listener(&modeButton,&powerButton, &control, &clockCheck, &dht);
     
+    
+    // DHT_Data dhtData;
+
     while (1)
     {
         listener.checkEvent();

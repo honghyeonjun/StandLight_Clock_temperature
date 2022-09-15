@@ -1,16 +1,7 @@
 #ifndef __DHT11_H__
 #define __DHT11_H__
 
-class DHT_Data
-{
-public:
-    int RH;
-    int RHDec;
-    int Temp;
-    int TempDec;
-    int checksum;
-    int error;
-};
+#include "DHT_Data.h"
 
 class DHT11
 {
