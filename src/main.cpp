@@ -17,7 +17,7 @@
 #include "DHT_Data.h"
 int main()
 {
-    std::cout << "Hello World!" << std::endl;
+    //std::cout << "Hello World!" << std::endl;
 
     Button modeButton(27);//mode
     Button powerButton(28);
